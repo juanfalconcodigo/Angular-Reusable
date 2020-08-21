@@ -1,0 +1,13 @@
+.container-admin {
+    width: 100%;
+    min-height: 100vh;
+    & .mat-drawer-container {
+        max-height: 100vh;
+        position: fixed;
+    }
+    & .search-container {
+        display: flex;
+        justify-content: flex-end;
+        margin: 1rem;
+    }
+}

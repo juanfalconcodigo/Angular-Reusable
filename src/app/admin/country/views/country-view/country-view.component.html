@@ -1,0 +1,10 @@
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let country of countries" [value]="country">
+        {{country.name}}
+        <mat-icon mat-list-icon>folder</mat-icon>
+
+    </mat-list-option>
+</mat-selection-list>
+<!-- <p>
+    Option selected: {{shoes.selectedOptions.selected[0]?.value.name}}
+</p> -->
