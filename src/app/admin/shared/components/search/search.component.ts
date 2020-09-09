@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
       search:new FormControl('')
     });
 
-    this.forma.controls['search'].valueChanges.pipe(throttleTime(1000,asyncScheduler,{
+    this.forma.controls['search'].valueChanges.pipe(throttleTime(2000,asyncScheduler,{
       leading:true,
       trailing:true
     })).subscribe((data)=>{
