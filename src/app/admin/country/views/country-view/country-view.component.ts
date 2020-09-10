@@ -9,34 +9,47 @@ import { Store } from '@ngrx/store';
   templateUrl: './country-view.component.html',
   styleUrls: ['./country-view.component.scss']
 })
-export class CountryViewComponent implements OnInit,OnDestroy {
-  countries:any[]=[];
-  subscriptionCountries:Subscription=null;
-  datafake:any[]=[];
-  constructor(private _countryService:CountryService,private store:Store<AppState>) { }
+export class CountryViewComponent implements OnInit, OnDestroy {
+  countries: any[] = [];
+  subscriptionCountries: Subscription = null;
+  datafake: any[] = [];
+  error: boolean;
+  constructor(public _countryService: CountryService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.select('search').subscribe((data:{search:string})=>{
-      this._countryService.getCountry(data.search).subscribe((resp)=>{
+    this.store.select('search').subscribe((data: { search: string }) => {
+      this._countryService.getCountry(data.search).subscribe((resp) => {
         console.log(resp);
-        this.countries=resp;
+        this.countries = resp;
+        this.error = false;
         //no da la respuesta esparada por el API usado
       },
-      (error)=>{
-        console.log(error.message);
-        this.countries=this.datafake;
-      }
+        (error) => {
+          console.log(error.message);
+          this.countries = this.datafake;
+          this.error = true;
+        }
       );
-    })
-    this.subscriptionCountries=this._countryService.getContries().subscribe((data)=>{
-      console.log(data);
-      this.countries=data;
-      this.datafake=data;
     });
+    this.getCountriesMethod();
+
   }
 
   ngOnDestroy(): void {
     this.subscriptionCountries.unsubscribe();
+  }
+
+  getCountriesMethod() {
+    this.subscriptionCountries = this._countryService.getCountries().subscribe((data: any) => {
+      console.log(data);
+      this.countries = data;
+      this.datafake = data;
+      this.error = false;
+    },(err)=>{
+      this.error=true;
+      this.countries=[];
+      this.datafake=[]
+    });
   }
 
 }

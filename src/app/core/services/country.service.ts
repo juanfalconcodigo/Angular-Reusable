@@ -9,7 +9,7 @@ export class CountryService {
 
   }
 
-  getContries():Observable<any>{
+  getCountries():Observable<any>{
     return this.http.get(`${this.environment}/lang/es`);
   }
 

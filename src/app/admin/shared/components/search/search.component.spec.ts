@@ -1,16 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchComponent } from './search.component';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
+  let store: MockStore;
+  const initialState = { search: "" };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent ],
+      imports:[
+        ReactiveFormsModule
+      ],
+      providers:[
+        provideMockStore({ initialState }),
+      ]
     })
     .compileComponents();
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {
@@ -22,4 +33,10 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should clear input', () => {
+    component.clearInput();
+    expect(component.forma.controls['search'].value).toEqual("");
+  });
+  
 });

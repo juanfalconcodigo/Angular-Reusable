@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
       search:new FormControl('')
     });
 
-    this.forma.controls['search'].valueChanges.pipe(throttleTime(2000,asyncScheduler,{
+    this.forma.controls['search'].valueChanges.pipe(throttleTime(3000,asyncScheduler,{
       leading:true,
       trailing:true
     })).subscribe((data)=>{
@@ -32,17 +32,12 @@ export class SearchComponent implements OnInit {
 
    clearInput(){
     this.forma.controls['search'].setValue('');
-
    }
 
 
   ngOnInit(): void {
 
     
-  }
-
-  searchCountry(){
-    console.log("Buscando...")
   }
 
 }
