@@ -67,3 +67,22 @@
         fill: #B5CBD0;
     }
 }
+
+@media(max-width:760px) {
+    .container-login {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        &__form {
+            svg {
+                display: none;
+            }
+        }
+    }
+}
