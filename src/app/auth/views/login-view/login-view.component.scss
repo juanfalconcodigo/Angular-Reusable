@@ -1,0 +1,69 @@
+.container-login {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 'image login';
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 10px;
+    &__img {
+        grid-area: image;
+        background-image: url('../../../../assets/images/ian-dooley-unsplash.jpg');
+        background-repeat: no-repeat;
+        animation: animateImage 15s alternate infinite ease-in-out both;
+    }
+    &__form {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        grid-area: login;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            transform-origin: bottom;
+            animation: animateSvg 15s infinite alternate;
+            & .path {
+                animation: animateSvgPath 15s infinite alternate;
+            }
+        }
+    }
+}
+
+@keyframes animateImage {
+    0% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
+@keyframes animateSvg {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1, .5);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes animateSvgPath {
+    0% {
+        fill: #026E8A;
+    }
+    50% {
+        fill: #039CAC;
+    }
+    100% {
+        fill: #B5CBD0;
+    }
+}

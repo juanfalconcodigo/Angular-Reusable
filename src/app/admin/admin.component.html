@@ -1,18 +1,6 @@
 <mat-drawer-container class="container-admin">
     <mat-drawer opened="false" mode="push" #snav class="mat-drawer-container">
-        <mat-nav-list>
-            <mat-list-item>
-                <a [routerLink]="['admin']">List countries</a>
-            </mat-list-item>
-        </mat-nav-list>
-        <mat-nav-list>
-            <mat-list-item>
-                <a [routerLink]="['']">
-                    Profile
-                </a>
-            </mat-list-item>
-        </mat-nav-list>
-
+        <app-sidenav></app-sidenav>
     </mat-drawer>
     <mat-drawer-content>
         <app-toolbar [snav]="snav"></app-toolbar>

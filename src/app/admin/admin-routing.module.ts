@@ -11,6 +11,10 @@ const routes: Routes = [{
       loadChildren:()=>import('./country/country.module').then(m=>m.CountryModule)
     },
     {
+      path:'profile',
+      loadChildren:()=>import('./profile/profile.module').then((m)=>m.ProfileModule)
+    },
+    {
       path:'**',
       pathMatch:'full',
       redirectTo:'list'

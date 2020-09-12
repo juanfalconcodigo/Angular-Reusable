@@ -1,0 +1,18 @@
+<mat-card class="container-form">
+    <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+
+    <form class="form-login" autocomplete="off" [formGroup]="forma" (ngSubmit)="onSubmit()">
+        <mat-card-content class="form-login__content">
+            <mat-form-field>
+                <input matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="primary" class="form-login__button">Log in</button>
+    </form>
+</mat-card>

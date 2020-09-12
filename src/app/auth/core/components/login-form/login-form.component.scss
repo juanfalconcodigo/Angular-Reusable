@@ -1,0 +1,12 @@
+.container-form {
+    width: 400px;
+}
+
+.form-login {
+    &__content {
+        display: grid;
+    }
+    &__button {
+        width: 100%;
+    }
+}

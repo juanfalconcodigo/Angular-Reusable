@@ -12,13 +12,16 @@ import { Store } from '@ngrx/store';
 export class CountryViewComponent implements OnInit, OnDestroy {
   countries: any[] = [];
   subscriptionCountries: Subscription = null;
+  subscriptionCountriesLoad: Subscription = null;
+  subscriptionStore:Subscription=null;
   datafake: any[] = [];
   error: boolean;
+
   constructor(public _countryService: CountryService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.select('search').subscribe((data: { search: string }) => {
-      this._countryService.getCountry(data.search).subscribe((resp) => {
+    this.subscriptionStore=this.store.select('search').subscribe((data: { search: string }) => {
+      this.subscriptionCountriesLoad=this._countryService.getCountry(data.search).subscribe((resp) => {
         console.log(resp);
         this.countries = resp;
         this.error = false;
@@ -37,6 +40,8 @@ export class CountryViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionCountries.unsubscribe();
+    this.subscriptionCountriesLoad.unsubscribe();
+    this.subscriptionStore.unsubscribe();
   }
 
   getCountriesMethod() {

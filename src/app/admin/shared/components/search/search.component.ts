@@ -5,6 +5,7 @@ import {AppState} from 'src/app/app.reducer';
 import { setSearch } from '../../../store/admin.actions';
 import { asyncScheduler } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ import { throttleTime } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
   forma:FormGroup;
-  constructor(private store:Store<AppState>) {
+  constructor(private store:Store<AppState>,private router:Router) {
     
     this.forma=new FormGroup({
       search:new FormControl('')
@@ -24,6 +25,7 @@ export class SearchComponent implements OnInit {
       trailing:true
     })).subscribe((data)=>{
       this.store.dispatch(setSearch({search:data}));
+      this.router.navigate(['admin']);
     });
     /* this.forma.controls['search'].valueChanges.subscribe((data)=>{
       this.store.dispatch(setSearch({search:data}));

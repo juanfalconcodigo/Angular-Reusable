@@ -1,1 +1,18 @@
-<p>sidenav works!</p>
+<mat-nav-list>
+    <mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">place</mat-icon>
+        <a [routerLink]="['admin']">List countries</a>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">perm_identity</mat-icon>
+        <a [routerLink]="['profile']">
+            Profile
+        </a>
+    </mat-list-item>
+    <mat-list-item class="list-nav">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">save_alt</mat-icon>
+        <a [routerLink]="['']">
+            Logout
+        </a>
+    </mat-list-item>
+</mat-nav-list>

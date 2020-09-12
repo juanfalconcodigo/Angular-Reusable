@@ -4,13 +4,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SharedModule as AppSharedModule } from '../../shared/shared.module';
 import { SearchComponent } from './components/search/search.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [SidenavComponent, ToolbarComponent, SearchComponent],
   imports: [
     CommonModule,
-    AppSharedModule
+    AppSharedModule,
+    RouterModule
   ],
   exports: [
     AppSharedModule,

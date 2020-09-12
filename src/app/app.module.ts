@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 import { CoreModule } from './core/core.module';
 
 //redux
@@ -16,8 +15,7 @@ import { environment } from '../environments/environment';
 import {appReducers} from './app.reducer';
 @NgModule({
   declarations: [
-    AppComponent,
-    AuthComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

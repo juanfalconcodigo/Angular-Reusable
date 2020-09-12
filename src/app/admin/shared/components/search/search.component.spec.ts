@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchComponent } from './search.component';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -14,7 +15,8 @@ describe('SearchComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SearchComponent ],
       imports:[
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ],
       providers:[
         provideMockStore({ initialState }),
