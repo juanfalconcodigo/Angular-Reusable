@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
   onSubmit(){
     if(this.forma.invalid){
       console.log('Form invalid');
-      return;
+      return null;
     }
     console.log(this.forma.value);
     this.router.navigate(['admin']);
