@@ -17,7 +17,7 @@ describe('CountryService', () => {
       ]
     });
     injector=getTestBed();
-    httpMock = injector.get(HttpTestingController);
+    httpMock = injector.inject(HttpTestingController);
   });
 
  /*  it('should be created', () => {
@@ -38,7 +38,7 @@ describe('CountryService', () => {
 
 
   it('Should fine get country', () => {
-    const service:CountryService=TestBed.get(CountryService);
+    const service:CountryService=TestBed.inject(CountryService);
     const dummyCountry={name:'Peru'};
     const name='Peru'
     service.getCountry(name).subscribe((resp)=>{
