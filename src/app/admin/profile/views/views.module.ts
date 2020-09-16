@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ViewsRoutingModule } from './views-routing.module';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
-
+import { CoreModule  } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
   ],
   imports: [
     CommonModule,
-    ViewsRoutingModule
+    ViewsRoutingModule,
+    CoreModule
   ]
 })
 export class ViewsModule { }

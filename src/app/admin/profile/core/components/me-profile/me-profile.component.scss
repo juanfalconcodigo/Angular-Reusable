@@ -1,0 +1,94 @@
+.container-me {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-areas: 'photo header header' 'photo data data' 'photo details details';
+    margin-bottom: 2rem;
+    &__photo {
+        grid-area: photo;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__header {
+        grid-area: header;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        h2 {
+            display: block;
+            margin-bottom: 0px;
+        }
+    }
+    &__data {
+        grid-area: data;
+        margin-top: 10px;
+        display: flex;
+        span {
+            margin-right: 15px;
+        }
+    }
+    &__details {
+        grid-area: details;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        span {
+            font-size: 1rem;
+        }
+        a {
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            &:visited {
+                color: #003799;
+            }
+        }
+    }
+}
+
+.mr_10 {
+    margin-right: 10px;
+}
+
+$mat-card-header-size:150px !default;
+.mat-card-avatar {
+    height: $mat-card-header-size;
+    width: $mat-card-header-size;
+    border-radius: 50%;
+    border: 6px solid white;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+@media (max-width:550px) {
+    .container-me {
+        grid-template-areas: 'photo header header header' 'data data data data' 'details details details details';
+        &__header {
+            justify-self: start;
+            align-self: center;
+            display: grid;
+            grid-template-areas: 'username settings' 'edit edit';
+            gap: 10px;
+            &__username {
+                grid-area: username;
+            }
+            &__edit {
+                grid-area: edit;
+            }
+            &__settings {
+                grid-area: settings;
+            }
+        }
+    }
+}
+
+@media (max-width:410px) {
+    .container-me {
+        grid-template-areas: 'photo' 'header' 'data' 'details';
+        gap: 10px;
+        &__data {
+            flex-wrap: wrap;
+        }
+    }
+}

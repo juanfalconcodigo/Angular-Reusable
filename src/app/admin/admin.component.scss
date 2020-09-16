@@ -8,6 +8,22 @@
     & .search-container {
         display: flex;
         justify-content: flex-end;
-        margin: 1rem;
+        /* margin: 1rem; */
+    }
+    &__toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        z-index: 2;
+    }
+    &__outlet {
+        box-sizing: border-box;
+        max-width: 960px;
+        min-height: calc(100vh - 64px);
+        width: 100%;
+        margin: 64px auto auto auto;
+        padding: 2rem 1rem;
     }
 }

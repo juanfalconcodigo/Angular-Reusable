@@ -1,13 +1,19 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="snavToggle()">
+<mat-toolbar class="toolbar-container">
+    <div>
+        <button mat-icon-button class="toolbar-container__button" aria-label="Example icon-button with menu icon" (click)="snavToggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Falcon</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+        <span>InstaClone</span>
+    </div>
+    <div class="toolbar-container__options">
+        <button mat-mini-fab class="toolbar-container__button" aria-label="Example icon-button with home icon" [routerLink]="['list']">
+      <mat-icon class="material-icons-outlined">home</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+        <button mat-mini-fab class="toolbar-container__button" aria-label="Example icon-button with add_circle_outline icon">
+      <mat-icon>add_circle_outline</mat-icon>
     </button>
+        <button mat-icon-button class="toolbar-container__button" aria-label="Example icon-button with avatar" [routerLink]="['profile']">
+          <img mat-icon-button mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        </button>
+    </div>
 </mat-toolbar>

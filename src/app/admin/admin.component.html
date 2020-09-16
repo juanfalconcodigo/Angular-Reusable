@@ -3,10 +3,12 @@
         <app-sidenav></app-sidenav>
     </mat-drawer>
     <mat-drawer-content>
-        <app-toolbar [snav]="snav"></app-toolbar>
+        <app-toolbar [snav]="snav" class="container-admin__toolbar"></app-toolbar>
         <div class="search-container">
-            <app-search></app-search>
+            <!--  <app-search></app-search> -->
         </div>
-        <router-outlet></router-outlet>
+        <div class="container-admin__outlet">
+            <router-outlet></router-outlet>
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>

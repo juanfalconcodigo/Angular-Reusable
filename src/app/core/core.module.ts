@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicesModule } from './services/services.module';
 import { GraphqlModule } from './graphql/graphql.module';
+import { GuardsModule } from './guards/guards.module';
 
 
 
@@ -9,7 +10,8 @@ import { GraphqlModule } from './graphql/graphql.module';
   imports: [
     CommonModule,
     ServicesModule,
-    GraphqlModule
+    GraphqlModule,
+    GuardsModule
   ],
 })
 export class CoreModule { }

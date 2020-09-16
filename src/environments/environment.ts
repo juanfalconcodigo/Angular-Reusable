@@ -4,6 +4,7 @@
 
 export const environment = {
   backendUrl:'https://restcountries.eu/rest/v2',
+  backendUrlGraphql:'http://localhost:4004/',
   production: false
 };
 
