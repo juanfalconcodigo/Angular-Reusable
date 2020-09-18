@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Hola {{data.username}}</h1>
+<div mat-dialog-content class="popup-upload-content">
+    <p>¿Que bueno que vas publicar?</p>
+    <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput accept="image/x-png,image/gif,image/jpeg,image/jpg">
+    <div class="popup-upload-content__img">
+        <span #myContainerSpinner *ngIf="loading">
+            <mat-spinner></mat-spinner>
+        </span>
+        <img style="cursor: pointer;" [src]="photoSelected || 'assets/images/no-image.png'" alt="No image" (click)="photoInput.click()">
+    </div>
+</div>
+<div mat-dialog-actions class="popup-upload-actions">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="onPublication()">Publicar</button>
+</div>

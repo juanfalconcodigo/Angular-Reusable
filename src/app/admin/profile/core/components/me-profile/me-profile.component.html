@@ -1,12 +1,11 @@
 <section class="container-me">
     <div class="container-me__photo">
-        <img mat-card-avatar src="https://instagram.flim18-3.fna.fbcdn.net/v/t51.2885-19/s150x150/117369698_3552562768100866_2004892092892877588_n.jpg?_nc_ht=instagram.flim18-3.fna.fbcdn.net&_nc_ohc=W224vetBA1AAX_by5R9&oh=64e47851bdc7c71152490f042700bea2&oe=5F8AB455"
-            alt="image profile">
+        <img mat-card-avatar [src]="userProfile.avatar" alt="image profile">
     </div>
     <div class="container-me__header">
-        <h2 class="container-me__header__username mr_10">juanfalcon_23s</h2>
+        <h2 class="container-me__header__username mr_10">{{userProfile.username}}</h2>
         <button mat-stroked-button class="container-me__header__edit mr_10">Editar Perfil</button>
-        <button mat-button class="container-me__header__settings">
+        <button mat-button class="container-me__header__settings" (click)="openDialog()">
             <mat-icon>settings</mat-icon>
         </button>
     </div>
@@ -16,9 +15,10 @@
         <span><strong>25</strong> seguidos</span>
     </div>
     <div class="container-me__details">
-        <h1>Juan Falcón | Angular Lover</h1>
-        <span>Angular - React</span>
-        <a href="">juanfalcon.vercel.app</a>
+        <h1>{{userProfile.name}}</h1>
+        <span>{{userProfile.description}}</span>
+        <a *ngIf="userProfile.siteWeb" [href]="userProfile.siteWeb" target="_blank">{{userProfile.siteWeb}}</a>
     </div>
 </section>
 <mat-divider></mat-divider>
+<!-- <img src="../../../../../../assets/images/no-image.png" /> -->

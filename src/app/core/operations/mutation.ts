@@ -22,6 +22,16 @@ mutation postLogin($input:LoginInput!){
 `;
 
 
+const UPLOAD_PUBLICATION=gql`
+mutation uploadPublish($file:Upload){
+  publish(file:$file){
+    status
+    urlPublish
+  }
+}
+`;
+
 export {
-  MUTATION_LOGIN
+  MUTATION_LOGIN,
+  UPLOAD_PUBLICATION
 }

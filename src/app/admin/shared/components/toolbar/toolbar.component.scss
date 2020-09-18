@@ -10,14 +10,19 @@
     &__options {
         display: flex;
         align-content: center;
+        &__button {
+            background-color: white;
+            color: black;
+            &:first-of-type {
+                margin-right: 10px;
+            }
+            &:nth-child(2) {
+                margin-right: 10px;
+            }
+        }
     }
     &__button {
-        background-color: white;
-        color: black;
         &:first-of-type {
-            margin-right: 10px;
-        }
-        &:nth-child(2) {
             margin-right: 10px;
         }
     }
@@ -32,7 +37,7 @@ $mat-card-header-size: 36px !default;
     border: 2px solid white;
 }
 
-@media (max-width:410px) {
+@media (max-width:500px) {
     .toolbar-container {
         div:nth-child(2) {
             position: fixed;
@@ -40,9 +45,11 @@ $mat-card-header-size: 36px !default;
             right: 0;
             flex-direction: column;
         }
-        &__button {
-            margin-right: 10px;
-            margin-bottom: 10px;
+        &__options {
+            &__button {
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
         }
     }
 }

@@ -8,6 +8,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   imports: [
     MatListModule,
@@ -18,7 +21,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   exports:[
     MatListModule,
@@ -29,7 +35,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule { }

@@ -5,10 +5,11 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SharedModule as AppSharedModule } from '../../shared/shared.module';
 import { SearchComponent } from './components/search/search.component';
 import { RouterModule } from '@angular/router';
+import { PopupUploadComponent } from './components/popup-upload/popup-upload.component';
 
 
 @NgModule({
-  declarations: [SidenavComponent, ToolbarComponent, SearchComponent],
+  declarations: [SidenavComponent, ToolbarComponent, SearchComponent, PopupUploadComponent],
   imports: [
     CommonModule,
     AppSharedModule,
@@ -17,8 +18,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     AppSharedModule,
     SidenavComponent,
-    ToolbarComponent,
-    SearchComponent
+    ToolbarComponent
   ]
 })
 export class SharedModule { }

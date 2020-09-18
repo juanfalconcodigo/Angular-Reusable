@@ -4,10 +4,13 @@ import { MUTATION_LOGIN } from '../operations/mutation';
 import {LoginInputI} from '../interfaces/inputUser';
 import * as Cookies from 'js-cookie';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { clearAuth } from '../../auth/store/auth.actions';
 @Injectable()
 export class AuthService {
 
-  constructor(private apollo: Apollo,public route:Router) { }
+  constructor(private apollo: Apollo,public route:Router,public store:Store<AppState>) { }
 
   mutationLogin(input: LoginInputI) {
     return this.apollo.mutate({
@@ -21,6 +24,7 @@ export class AuthService {
 
   logout(){
     Cookies.remove('token');
-    this.route.navigate(['auth'])
+    this.route.navigate(['auth']);
+    this.store.dispatch(clearAuth());
   }
 }

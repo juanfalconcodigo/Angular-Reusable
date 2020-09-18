@@ -4,7 +4,7 @@
     height: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-auto-rows: minmax(150px, 150px);
     gap: 1rem;
     &__item {
         overflow: hidden;

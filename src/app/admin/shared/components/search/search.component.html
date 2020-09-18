@@ -1,6 +1,11 @@
-<form [formGroup]="forma" autocomplete="off">
-    <mat-form-field class="search-form-field">
-        <mat-label>Ingrese pais a buscar:</mat-label>
-        <input matInput type="text" formControlName="search" #search>
+<form class="example-form" [formGroup]="forma">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Buscar" aria-label="State" [matAutocomplete]="auto" formControlName="search">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let user of users|async" [value]="user.name">
+                <img class="example-option-img" aria-hidden [src]="user.avatar || 'assets/images/no-image.png'" height="25">
+                <span>{{user.name}}</span>
+            </mat-option>
+        </mat-autocomplete>
     </mat-form-field>
 </form>

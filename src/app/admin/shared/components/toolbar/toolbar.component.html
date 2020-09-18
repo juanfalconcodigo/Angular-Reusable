@@ -5,15 +5,18 @@
     </button>
         <span>InstaClone</span>
     </div>
+    <div>
+        <app-search></app-search>
+    </div>
     <div class="toolbar-container__options">
-        <button mat-mini-fab class="toolbar-container__button" aria-label="Example icon-button with home icon" [routerLink]="['list']">
+        <button mat-mini-fab class="toolbar-container__options__button" aria-label="Example icon-button with home icon" [routerLink]="['list']">
       <mat-icon class="material-icons-outlined">home</mat-icon>
     </button>
-        <button mat-mini-fab class="toolbar-container__button" aria-label="Example icon-button with add_circle_outline icon">
+        <button mat-mini-fab class="toolbar-container__options__button" aria-label="Example icon-button with add_circle_outline icon" (click)="openDialog()">
       <mat-icon>add_circle_outline</mat-icon>
     </button>
-        <button mat-icon-button class="toolbar-container__button" aria-label="Example icon-button with avatar" [routerLink]="['profile']">
-          <img mat-icon-button mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <button mat-icon-button class="toolbar-container__options__button" aria-label="Example icon-button with avatar" [routerLink]="['profile']">
+          <img mat-icon-button mat-card-avatar [src]="userProfile.avatar" alt="Photo of a Shiba Inu">
         </button>
     </div>
 </mat-toolbar>
