@@ -15,8 +15,8 @@
         <button mat-mini-fab class="toolbar-container__options__button" aria-label="Example icon-button with add_circle_outline icon" (click)="openDialog()">
       <mat-icon>add_circle_outline</mat-icon>
     </button>
-        <button mat-icon-button class="toolbar-container__options__button" aria-label="Example icon-button with avatar" [routerLink]="['profile']">
-          <img mat-icon-button mat-card-avatar [src]="userProfile.avatar" alt="Photo of a Shiba Inu">
+        <button mat-icon-button class="toolbar-container__options__button" aria-label="Example icon-button with avatar" [routerLink]="['profile',userProfile.username]">
+          <img mat-icon-button mat-card-avatar [src]="userProfile.avatar" alt="Photo profile">
         </button>
     </div>
 </mat-toolbar>

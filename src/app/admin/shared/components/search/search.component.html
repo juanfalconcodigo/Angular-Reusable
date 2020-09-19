@@ -1,11 +1,20 @@
-<form class="example-form" [formGroup]="forma">
+<form class="example-form" [formGroup]="forma" #myInput>
     <mat-form-field class="example-full-width">
         <input matInput placeholder="Buscar" aria-label="State" [matAutocomplete]="auto" formControlName="search">
         <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let user of users|async" [value]="user.name">
-                <img class="example-option-img" aria-hidden [src]="user.avatar || 'assets/images/no-image.png'" height="25">
-                <span>{{user.name}}</span>
+            <mat-option *ngFor="let user of users|async" [value]="user.name" (click)="getRouteUser(user.username)">
+                <div class="mat-option-search">
+                    <div class="mat-option-search__img">
+                        <img class="example-option-img" aria-hidden [src]="user.avatar || 'assets/images/no-image.png'" height="25">
+                    </div>
+                    <div class="mat-option-search__data">
+                        <span><strong>{{user.name}}</strong></span>
+                        <span>{{user.username}}</span>
+                    </div>
+                </div>
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
 </form>
+
+<span class="device" #device></span>

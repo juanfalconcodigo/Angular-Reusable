@@ -11,7 +11,7 @@ const routes: Routes = [{
       loadChildren:()=>import('./country/country.module').then(m=>m.CountryModule)
     },
     {
-      path:'profile',
+      path:'profile/:username',
       loadChildren:()=>import('./profile/profile.module').then((m)=>m.ProfileModule)
     },
     {

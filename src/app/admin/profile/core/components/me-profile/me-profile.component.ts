@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupOptionComponent } from '../popup-option/popup-option.component';
 import { Store } from '@ngrx/store';
@@ -12,18 +12,19 @@ import { UserI } from '../../../../../models/user.model';
   styleUrls: ['./me-profile.component.scss']
 })
 export class MeProfileComponent implements OnInit, OnDestroy {
-  userSubscription: Subscription = null;
+  /* userSubscription: Subscription = null; */
   userProfile: UserI = null;
+  @Input('user') user:UserI;
   constructor(public dialog: MatDialog, public store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.userSubscription = this.store.select('auth').subscribe(({ user }) => {
+    /* this.userSubscription = this.store.select('auth').subscribe(({ user }) => {
       console.log(user);
       this.userProfile = user
-    });
+    }); */
   }
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    /* this.userSubscription.unsubscribe(); */
   }
 
   openDialog(): void {
@@ -35,7 +36,7 @@ export class MeProfileComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The popup settings was closed');
     });
   }
 }

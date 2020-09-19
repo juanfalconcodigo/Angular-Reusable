@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 56px;
     div:nth-child(1) {
         display: flex;
         align-items: center;
@@ -37,9 +38,9 @@ $mat-card-header-size: 36px !default;
     border: 2px solid white;
 }
 
-@media (max-width:500px) {
+@media (max-width:700px) {
     .toolbar-container {
-        div:nth-child(2) {
+        div:nth-child(3) {
             position: fixed;
             bottom: 10px;
             right: 0;
@@ -50,6 +51,26 @@ $mat-card-header-size: 36px !default;
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
+        }
+    }
+}
+
+@media (max-width:550px) {
+    .toolbar-container {
+        div:nth-child(3) {
+            bottom: 50px;
+        }
+        div:nth-child(2) {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: 56px;
+            background-color: #FAFAFA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
         }
     }
 }

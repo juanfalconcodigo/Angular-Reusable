@@ -1,18 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { setSearch } from '../../../store/admin.actions';
-import { asyncScheduler } from 'rxjs';
+import { asyncScheduler, Subscription } from 'rxjs';
 import { tap, throttleTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../../../../core/services/user.service';
-export interface State {
-  flag: string;
-  name: string;
-  population: string;
-}
+import { fromEvent } from 'rxjs';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -20,7 +17,11 @@ export interface State {
 })
 export class SearchComponent implements OnInit, OnDestroy {
   forma: FormGroup;
-  users:Observable<any>;
+  users: Observable<any>;
+  @ViewChild("myInput", { static: false }) myInput: ElementRef;
+  @ViewChild("device", { static: false }) device: ElementRef;
+  styleSubscription:Subscription=null;
+
   constructor(private store: Store<AppState>, private router: Router, public _userService: UserService) {
 
     this.forma = new FormGroup({
@@ -31,17 +32,20 @@ export class SearchComponent implements OnInit, OnDestroy {
       leading: true,
       trailing: true
     }),
-    tap((value)=>{
-      console.log('store', value);
-    })).subscribe((data) => {
-      this.store.dispatch(setSearch({ search: data }));
-      this.users=this._userService.queryUserSearch(data);
-      /* this.router.navigate(['admin']); */
-    });
+      tap((value) => {
+        console.log('store', value);
+      })).subscribe((data) => {
+        this.store.dispatch(setSearch({ search: data }));
+        this.users = this._userService.queryUserSearch(data);
+      });
   }
 
   clearInput() {
     this.forma.controls['search'].setValue('');
+  }
+
+  getRouteUser(username) {
+    this.router.navigate(['admin/profile', username]);
   }
 
 
@@ -50,7 +54,21 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
+  ngAfterViewInit() {
+    this.styleSubscription=fromEvent(document, 'click').subscribe((e) => {
+      if (this.myInput.nativeElement.contains(e.target)) {
+        /* console.log('esta dentro'); */
+        this.device.nativeElement.classList.add('cell-device');
+      } else {
+        /* console.log('esta fuera'); */
+        this.device.nativeElement.classList.remove('cell-device');
+      }
+    });
   }
+
+  ngOnDestroy() {
+    this.styleSubscription.unsubscribe();
+  }
+
 
 }

@@ -1,2 +1,8 @@
-<app-me-profile></app-me-profile>
-<app-list-publication></app-list-publication>
+<div *ngIf="user">
+    <app-me-profile [user]="user"></app-me-profile>
+    <app-list-publication [username]="user.username"></app-list-publication>
+</div>
+<div class="container-notfound" *ngIf="error">
+    <h2>Esta página no está disponible.</h2>
+    <p>Es posible que el enlace que has seguido sea incorrecto o que se haya eliminado la página. Volver al <a [routerLink]="['list']">Inicio</a>.</p>
+</div>

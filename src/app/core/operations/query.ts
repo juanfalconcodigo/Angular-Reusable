@@ -23,7 +23,24 @@ query search($search: String) {
 }
 `;
 
+
+const QUERY_GET_USER=gql`
+query getUser($id:ID,$username:String){
+  getUser(id:$id,username:$username){
+     id
+    name
+    username
+    email
+    avatar
+    siteWeb
+    description
+    password
+    createdAt
+  }
+}`;
+
 export {
     QUERY_ME_PUBLICATION,
-    QUERY_SEARCH_USER
+    QUERY_SEARCH_USER,
+    QUERY_GET_USER
 }

@@ -5,16 +5,60 @@
     font-size: .8rem;
 }
 
+.mat-option-search {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 48px;
+    &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__data {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        span {
+            line-height: normal;
+            font-size: .8rem;
+        }
+    }
+}
+
 .example-full-width {
     width: 100%;
 }
 
 .example-option-img {
     vertical-align: middle;
-    margin-right: 8px;
+    /* margin-right: 8px; */
 }
 
 [dir='rtl'] .example-option-img {
     margin-right: 0;
-    margin-left: 8px;
+    /*  margin-left: 8px; */
+}
+
+.device {
+    display: none;
+}
+
+@media (max-width:550px) {
+    .cell-device {
+        display: block;
+        position: fixed;
+        background-color: rgba(0, 0, 0, .2);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 56px;
+    }
+}
+
+@media (max-width:350px) {
+    .example-form {
+        min-width: 200px;
+    }
 }

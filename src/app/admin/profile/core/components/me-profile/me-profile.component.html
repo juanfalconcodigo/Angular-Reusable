@@ -1,9 +1,9 @@
 <section class="container-me">
     <div class="container-me__photo">
-        <img mat-card-avatar [src]="userProfile.avatar" alt="image profile">
+        <img mat-card-avatar [src]="user.avatar || 'assets/images/no-image.png'" alt="image profile">
     </div>
     <div class="container-me__header">
-        <h2 class="container-me__header__username mr_10">{{userProfile.username}}</h2>
+        <h2 class="container-me__header__username mr_10">{{user.username}}</h2>
         <button mat-stroked-button class="container-me__header__edit mr_10">Editar Perfil</button>
         <button mat-button class="container-me__header__settings" (click)="openDialog()">
             <mat-icon>settings</mat-icon>
@@ -15,10 +15,10 @@
         <span><strong>25</strong> seguidos</span>
     </div>
     <div class="container-me__details">
-        <h1>{{userProfile.name}}</h1>
-        <span>{{userProfile.description}}</span>
-        <a *ngIf="userProfile.siteWeb" [href]="userProfile.siteWeb" target="_blank">{{userProfile.siteWeb}}</a>
+        <h1>{{user.name}}</h1>
+        <span>{{user.description}}</span>
+        <a *ngIf="user.siteWeb" [href]="user.siteWeb" target="_blank">{{user.siteWeb}}</a>
     </div>
 </section>
 <mat-divider></mat-divider>
-<!-- <img src="../../../../../../assets/images/no-image.png" /> -->
+<!-- <img src="../../../../../src/assets/images/no-image.png" /> -->
