@@ -19,7 +19,7 @@ export class ToolbarComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.avatarSubscription=this.store.select('auth').subscribe(({user})=>{
-      this.userProfile=user
+      this.userProfile=user;
     })
   }
 
