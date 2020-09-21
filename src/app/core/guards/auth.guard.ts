@@ -8,9 +8,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import * as moment from 'moment';
 import { setAuth } from '../../auth/store/auth.actions';
+import { UserService } from '../services/user.service';
+import { UserI } from '../../models/user.model';
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(public _authService: AuthService, public router: Router, public store: Store<AppState>) {
+  constructor(public _authService: AuthService, public router: Router, public store: Store<AppState>,public _userService:UserService) {
 
   }
 
@@ -29,9 +31,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   checkLogging(): boolean {
     try {
-      const token = Cookie.get('token');
+      const token:string = Cookie.get('token');
       if (token) {
-        const { exp, user } = jwt_decode(token);
+        const { exp,username } = jwt_decode(token);
         console.log(exp);
         if (exp <= moment().unix()) {
           console.log("Token expirado");
@@ -39,8 +41,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
           return false;
         }
         else {
-          //esto genera un comportamiento raro que por ahora no entiendo
-          this.store.dispatch(setAuth({ user, token }));
+          const subscribe=this._userService.queryGetUser(username).subscribe((user:UserI)=>{
+            /* console.log('servicio en el guard',user); */
+            //esto genera un comportamiento raro que por ahora no entiendo en el me profile al estar en otra view
+            this.store.dispatch(setAuth({ user, token }));
+          });
           return true;
         }
 
