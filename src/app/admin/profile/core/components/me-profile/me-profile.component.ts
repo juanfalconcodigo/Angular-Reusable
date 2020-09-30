@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { UserI } from '../../../../../models/user.model';
+import { PopupAvatarComponent } from '../popup-avatar/popup-avatar.component';
 
 @Component({
   selector: 'app-me-profile',
@@ -15,7 +16,7 @@ export class MeProfileComponent implements OnInit, OnDestroy {
   userSubscription: Subscription = null;
   userProfile: UserI = null;
   @Input('user') user: UserI;
-  constructor(public dialog: MatDialog, public store: Store<AppState>) { }
+  constructor(public dialogOption: MatDialog, public store: Store<AppState>, public dialogAvatar: MatDialog) { }
 
   ngOnInit(): void {
     this.userSubscription = this.store.select('auth').subscribe(({ user }) => {
@@ -27,18 +28,35 @@ export class MeProfileComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  openDialog(): void {
+  openDialogOption(): void {
     //el cambio de estilo colocarlo en styles.scss si lo colocas en este mismo componente no reconoce los estilos
-    const dialogRef = this.dialog.open(PopupOptionComponent, {
+    const dialogRef = this.dialogOption.open(PopupOptionComponent, {
       width: '250px',
       panelClass: 'app-full-bleed-dialog',
       data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The popup settings was closed');
+      console.log('The popupOption settings was closed');
     });
   }
+
+  openDialogAvatar() {
+    if(this.userProfile.username!==this.user.username){
+      return null;
+    }
+    const dialogRef = this.dialogAvatar.open(PopupAvatarComponent, {
+      width: '600px',
+      height:'auto',
+      data: this.userProfile,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The popupAvatar settings was closed');
+    });
+  }
+
+
 
   follow() {
     console.log('seguir');

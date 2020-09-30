@@ -1,0 +1,32 @@
+<section mat-dialog-content class="container-avatar">
+    <p class="container-avatar__title">Configure su Perfil :</p>
+    <div class="container-avatar__image">
+        <app-editor-fabric #canvas [urlImageAvatar]="data.avatar"></app-editor-fabric>
+    </div>
+    <div class="container-avatar__options">
+        <img id="imageUpload" [src]="canvas.url ||'assets/images/no-image.png'" (click)="addImageOnCanvas(canvas.url);">
+        <input style="display: none;" #photoInput type="file" (change)="readUrl($event);" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+        <button mat-stroked-button (click)="photoInput.click()">Cargar imagen</button>
+        <button mat-stroked-button color="warn" (click)="removeSelected()">Eliminar imagen</button>
+    </div>
+    <div class="container-avatar__icons">
+        <div class="container-avatar__icons__title">
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip color="primary" selected>Iconos</mat-chip><span>!!Recomendamos editar su foto en PC</span>
+            </mat-chip-list>
+        </div>
+        <div class="container-avatar__icons__items">
+            <img class="images-item" (click)="getImgPolaroid($event)" src="assets/images/abra.svg">
+            <img (click)="getImgPolaroid($event)" src="assets/images/bellsprout.svg">
+            <img (click)="getImgPolaroid($event)" src="assets/images/dratini.svg">
+            <img (click)="getImgPolaroid($event)" src="assets/images/bullbasaur.svg">
+            <img (click)="getImgPolaroid($event)" src="assets/images/caterpie.svg">
+            <img (click)="getImgPolaroid($event)" src="assets/images/charmander.svg">
+        </div>
+    </div>
+
+</section>
+<div mat-dialog-actions class="container-mat-dialog-actions">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="rasterize()">Subir avatar</button>
+</div>

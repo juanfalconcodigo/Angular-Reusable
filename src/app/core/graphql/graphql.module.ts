@@ -3,8 +3,8 @@ import { APOLLO_OPTIONS } from "apollo-angular";
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
-import { environment } from '../../../environments/environment.prod';
-/* import { environment } from 'src/environments/environment'; */
+/* import { environment } from '../../../environments/environment.prod'; */
+import { environment } from 'src/environments/environment';
 import * as Cookie from 'js-cookie';
 
 
@@ -23,7 +23,7 @@ export function provideApollo(httpLink: HttpLink) {
     };
   });
 
-  const link = ApolloLink.from([auth, httpLink.create({ uri: environment.backendUrlGraphql })]);
+  const link = ApolloLink.from([auth, httpLink.create({ uri: `${environment.backendUrlGraphql}graphql` })]);
   const cache = new InMemoryCache();
   return {
     link,

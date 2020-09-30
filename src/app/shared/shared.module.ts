@@ -4,10 +4,11 @@ import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 MaterialModule
 @NgModule({
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundComponent, ImagePipe],
   imports: [
     CommonModule,
     MaterialModule,
@@ -19,7 +20,8 @@ MaterialModule
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NotFoundComponent
+    NotFoundComponent,
+    ImagePipe
   ]
 })
 export class SharedModule { }

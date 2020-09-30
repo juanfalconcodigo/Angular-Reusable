@@ -1,12 +1,12 @@
 <section class="container-me">
     <div class="container-me__photo">
-        <img mat-card-avatar [src]="user.avatar || 'assets/images/no-image.png'" alt="image profile">
+        <img mat-card-avatar [src]="user.avatar|image" alt="image profile" (click)="openDialogAvatar()">
     </div>
     <div [ngClass]="{'container-me__header':user?.id===userProfile?.id,'container-me__header__not':user?.id!==userProfile?.id}">
         <h2 class="container-me__header__username mr_10">{{user.username}}</h2>
         <button mat-stroked-button class="container-me__header__edit mr_10" *ngIf="user?.id===userProfile?.id">Editar
             Perfil</button>
-        <button mat-button class="container-me__header__settings" *ngIf="user?.id===userProfile?.id" (click)="openDialog()">
+        <button mat-button class="container-me__header__settings" *ngIf="user?.id===userProfile?.id" (click)="openDialogOption()">
             <mat-icon>settings</mat-icon>
         </button>
         <div *ngIf="user?.id!==userProfile?.id">

@@ -31,7 +31,16 @@ mutation uploadPublish($file:Upload){
 }
 `;
 
+const UPDATE_AVATAR=gql`
+mutation updateAvatar($file: Upload) {
+  updateAvatar(file: $file) {
+    status
+    urlAvatar
+  }
+}
+`;
 export {
   MUTATION_LOGIN,
-  UPLOAD_PUBLICATION
+  UPLOAD_PUBLICATION,
+  UPDATE_AVATAR
 }

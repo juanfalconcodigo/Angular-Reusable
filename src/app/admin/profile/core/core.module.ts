@@ -5,10 +5,11 @@ import { MeProfileComponent } from './components/me-profile/me-profile.component
 //este SharedModule es del modulo del admin module no del shared module principal
 import { SharedModule as AdminSharedModule } from '../../shared/shared.module';
 import { PopupOptionComponent } from './components/popup-option/popup-option.component';
+import { PopupAvatarComponent } from './components/popup-avatar/popup-avatar.component';
 
 
 @NgModule({
-  declarations: [ListPublicationComponent, MeProfileComponent, PopupOptionComponent],
+  declarations: [ListPublicationComponent, MeProfileComponent, PopupOptionComponent, PopupAvatarComponent],
   imports: [
     CommonModule,
     AdminSharedModule

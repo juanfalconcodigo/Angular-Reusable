@@ -12,6 +12,6 @@ import { GuardsModule } from './guards/guards.module';
     ServicesModule,
     GraphqlModule,
     GuardsModule
-  ],
+  ]
 })
 export class CoreModule { }

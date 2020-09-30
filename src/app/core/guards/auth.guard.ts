@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import { setAuth } from '../../auth/store/auth.actions';
 import { UserService } from '../services/user.service';
 import { UserI } from '../../models/user.model';
+import { take } from 'rxjs/operators';
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(public _authService: AuthService, public router: Router, public store: Store<AppState>,public _userService:UserService) {
@@ -22,7 +23,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.checkLogging();
   }
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.canActivate(childRoute, state);
+    /* return this.canActivate(childRoute, state); */
+    return this.checkLogging();
   }
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.checkLogging();
@@ -41,7 +43,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
           return false;
         }
         else {
-          const subscribe=this._userService.queryGetUser(username).subscribe((user:UserI)=>{
+          const subscribe=this._userService.queryGetUser(username).pipe(take(1)).subscribe((user:UserI)=>{
             /* console.log('servicio en el guard',user); */
             //esto genera un comportamiento raro que por ahora no entiendo en el me profile al estar en otra view
             this.store.dispatch(setAuth({ user, token }));

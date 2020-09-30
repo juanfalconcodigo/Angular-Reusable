@@ -1,6 +1,7 @@
+import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { UserI } from '../../models/user.model';
-import { setAuth, clearAuth } from './auth.actions';
+import { setAuth, clearAuth, updateAvatar } from './auth.actions';
 
 export interface AuthState {
     user: UserI;
@@ -24,6 +25,15 @@ const _authReducer = createReducer(initialState,
         return {
             user: null,
             token: null
+        }
+    }),
+    on(updateAvatar, (state, { avatar }) => {
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                avatar
+            }
         }
     })
 );

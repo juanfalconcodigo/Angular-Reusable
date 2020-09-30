@@ -30,6 +30,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
+    console.log('se destruyo')
   }
 
 }
